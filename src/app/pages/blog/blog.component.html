@@ -1,0 +1,84 @@
+ <div class="container rest_container">
+
+    <div class="row">
+      
+      <div class="service_flex">  
+        <label class="bold_lbl">{{environment.websiteName}}</label>
+        &nbsp;
+        <div class="input-group">
+          <input type="text" [(ngModel)]="search" placeholder="Filter by city" #filter>
+          <button class="primary" (click)="filterResults()" type="button">Search</button>
+        </div>
+      </div>
+      
+
+      <div class="col-lg-12">
+        <div class="row product_div" *ngIf="list?.length">
+          <div class="pro_col col-lg-4 col-sm-12 col-md-6 col-xs-12" *ngFor="let item of list"
+            >
+            <div class="pro_div hoverable">
+              <div class="rest_img bg_image" [style.backgroundImage]="'url('+ item.urlToImage +')'">
+                <div class="overlay">
+                  <label class="date">{{getDate(item.publishedAt)}}</label>
+                  <label class="month">{{getMonth(item.publishedAt)}}</label>
+                </div>
+              </div>
+              <div class="content_div">
+                <label class="pro_name">{{ item.title }}</label>
+                <!-- <label class="pro_name">{{ (item.title.length>20)? (item.title | slice:0:20)+'..':(item.title) }}</label> -->
+                <label class="addr" [innerHTML]="getContent(item)">
+  
+                </label>
+  
+                <div class="service_flex" (click)="goToUrl(item.url)">
+                  <label *ngIf="item.author" >By</label>
+                  <label>{{ item.author }}</label>
+                  &nbsp;
+                  <label>Read More</label>
+                  <mat-icon aria-hidden="false" aria-label="arrow forward" fontIcon="arrow_forward"></mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+              class="search-results"
+              infiniteScroll
+              [infiniteScrollDistance]="1"
+              [infiniteScrollThrottle]="50"
+              (scrolled)="changePage(currentPage + 1)"
+              
+          ></div>
+
+        </div>
+  
+        <div class="row product_div" *ngIf="apiCalled == false">
+          <div class="pro_col col-lg-4 col-sm-12 col-md-6 col-xs-12" *ngFor="let item of [1,2,3,4,5,6,7,8]">
+            <div class="pro_div hoverable">
+              <div class="rest_img bg_image">
+                <ngx-skeleton-loader appearance="circle" [theme]="{ 'border-radius': '5px', height: '150px',width:'90%'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="content_div">
+                <label class="pro_name">
+                  <ngx-skeleton-loader appearance="line" [theme]="{  height: '20px',width:'150px'}">
+                  </ngx-skeleton-loader>
+                </label>
+                <label class="addr">
+                  <ngx-skeleton-loader appearance="line" [theme]="{  height: '20px',width:'120px'}">
+                  </ngx-skeleton-loader>
+                  <ngx-skeleton-loader appearance="line" [theme]="{  height: '20px',width:'70px'}"> </ngx-skeleton-loader>
+                  <ngx-skeleton-loader appearance="line" [theme]="{  height: '20px',width:'70px'}"> </ngx-skeleton-loader>
+                </label>
+  
+  
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  
+    </div>
+  </div>
+  

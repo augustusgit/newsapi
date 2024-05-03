@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "minycartlive": {
+      "hosting": {
+        "lawpavl": [
+          "lawpavilion"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "minycartlive"
+  }
+}
