@@ -2,6 +2,8 @@
 
 This project was developed by Augustus Nwangwu, the website fetches new from new api sources. You can view the project on live server by going here [LawPavilion](https://lawpavilion.web.app/). News API does not support request from browser for free account, so to see that content you will have to run on localhost server.
 
+## Angular 17+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

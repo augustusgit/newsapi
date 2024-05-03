@@ -41,6 +41,12 @@
             </div>
           </div>
 
+          <div class="service_flex" *ngIf="apiCalled && list == []">
+            
+            <label class="bold_lbl">News API Does Not Allow Request From A Live Site</label>
+    
+          </div>
+
           <div
               class="search-results"
               infiniteScroll
